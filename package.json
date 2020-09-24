@@ -1,0 +1,12 @@
+
+{
+	"name": "com.linestudio.rmcp.kcp",
+	"displayName": "KCP",
+	"version": "0.1.0",
+	"unity": "2018.1",
+	"description": "KCP",
+	"keywords": ["KCP", "rudp"],
+	"category": "network",
+	"dependencies": {
+	}
+}
