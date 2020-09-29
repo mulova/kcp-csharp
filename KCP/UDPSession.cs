@@ -22,7 +22,7 @@ namespace KcpProject
         public IPEndPoint RemoteAddress { get; private set; }
         public IPEndPoint LocalAddress { get; private set; }
 
-        public void Connect(string host, int port)
+        public void Connect(string host, int port, uint conv = 0)
         {
             IPHostEntry hostEntry = Dns.GetHostEntry(host);
             if (hostEntry.AddressList.Length == 0)
@@ -34,7 +34,7 @@ namespace KcpProject
             mSocket.Connect(endpoint, port);
             RemoteAddress = (IPEndPoint)mSocket.RemoteEndPoint;
             LocalAddress = (IPEndPoint)mSocket.LocalEndPoint;
-            mKCP = new KCP((uint)(new Random().Next(1, Int32.MaxValue)), rawSend);
+            mKCP = new KCP(conv > 0? conv: (uint)(new Random().Next(1, Int32.MaxValue)), rawSend);
             // normal:  0, 40, 2, 1
             // fast:    0, 30, 2, 1
             // fast2:   1, 20, 2, 1
