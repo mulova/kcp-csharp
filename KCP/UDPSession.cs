@@ -30,6 +30,11 @@ namespace KcpProject
                 throw new Exception("Unable to resolve host: " + host);
             }
             var endpoint = hostEntry.AddressList[0];
+            Connect(endpoint, port, conv);
+        }
+
+        public void Connect(IPAddress endpoint, int port, uint conv = 0)
+        {
             mSocket = new Socket(endpoint.AddressFamily, SocketType.Dgram, ProtocolType.Udp);
             mSocket.Connect(endpoint, port);
             RemoteAddress = (IPEndPoint)mSocket.RemoteEndPoint;
